@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Services – Allayer</title>
+  <meta name="description" content="Experience seamless global payments with transparent pricing, real-time rates, and enterprise-grade security." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <style>
+    /* ─── Page Hero ─── */
+    .page-hero {
+      padding: 160px 5% 100px;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .page-hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+      right: 0; bottom: -100px;
+    }
+    .page-hero-inner {
+      position: relative; z-index: 2;
+      max-width: 800px;
+    }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .page-hero h1 span { color: var(--orange); }
+    .page-hero p { font-size: 1.1rem; color: #aaa; line-height: 1.75; max-width: 580px; }
+    .hero-badges {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-top: 36px;
+    }
+    .badge-pill {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.25);
+      color: var(--orange-light);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    /* ─── Services Overview ─── */
+    .services-overview {
+      padding: 100px 5%;
+      background: var(--white);
+    }
+    .services-overview-inner { max-width: 1200px; margin: 0 auto; }
+    .overview-header { margin-bottom: 60px; }
+    .overview-lead {
+      font-size: 1.15rem;
+      color: var(--grey);
+      line-height: 1.8;
+      max-width: 700px;
+      margin-top: 20px;
+    }
+
+    /* Main Services Grid */
+    .services-main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2px;
+      background: #eee;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .service-row {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 0;
+      align-items: center;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .service-row:hover { background: var(--orange-pale); }
+    .service-row:hover .service-num { background: var(--orange); color: var(--white); }
+    .service-num {
+      background: var(--light-grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--orange);
+      height: 100%;
+      min-height: 110px;
+      transition: all 0.3s;
+    }
+    .service-body { padding: 28px 32px; }
+    .service-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .service-body p { font-size: 0.9rem; color: var(--grey); line-height: 1.65; }
+    .service-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-top: 12px;
+    }
+    .service-tag-chip {
+      background: var(--orange-pale);
+      color: var(--orange-deep);
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--orange-light);
+    }
+    .service-arrow {
+      padding: 28px 32px;
+      font-size: 1.5rem;
+      color: var(--orange);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .service-row:hover .service-arrow { opacity: 1; }
+
+    /* ─── Feature Highlights ─── */
+    .features {
+      padding: 100px 5%;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .features::before {
+      content: '';
+      position: absolute;
+      left: -200px; top: 50%;
+      transform: translateY(-50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+    }
+    .features-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .features-header { text-align: center; margin-bottom: 64px; }
+    .features-header .section-title { color: var(--white); }
+    .features-header .section-desc { color: #777; margin: 0 auto; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feat-card {
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 36px 28px;
+      background: rgba(255,255,255,0.02);
+      transition: all 0.3s;
+    }
+    .feat-card:hover {
+      background: rgba(249,115,22,0.06);
+      border-color: rgba(249,115,22,0.3);
+      transform: translateY(-4px);
+    }
+    .feat-icon {
+      width: 52px; height: 52px;
+      background: rgba(249,115,22,0.12);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      border: 1px solid rgba(249,115,22,0.2);
+    }
+    .feat-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .feat-card p { font-size: 0.88rem; color: #777; line-height: 1.7; }
+
+    /* ─── Currencies / Reach ─── */
+    .reach {
+      padding: 100px 5%;
+      background: var(--white);
+    }
+    .reach-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .reach-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .reach-stat-card {
+      background: var(--light-grey);
+      border-radius: 14px;
+      padding: 32px 24px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    .reach-stat-card:hover {
+      border-color: var(--orange);
+      background: var(--orange-pale);
+    }
+    .reach-stat-card .big-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .reach-stat-card .label { font-size: 0.85rem; color: var(--grey); font-weight: 500; }
+    .reach-stat-card.dark {
+      background: var(--dark);
+    }
+    .reach-stat-card.dark .big-num { color: var(--orange); }
+    .reach-stat-card.dark .label { color: #777; }
+    .currency-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 24px;
+    }
+    .currency-chip {
+      background: var(--light-grey);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--black);
+      border: 1px solid #e5e5e5;
+      transition: all 0.2s;
+    }
+    .currency-chip:hover {
+      background: var(--orange);
+      color: var(--white);
+      border-color: var(--orange);
+    }
+
+    /* ─── CTA Banner ─── */
+    .cta-banner {
+      padding: 80px 5%;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-deep) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .cta-banner-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .cta-banner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-banner p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 36px; }
+    .cta-banner .btn-primary { background: var(--white); color: var(--orange); }
+    .cta-banner .btn-primary:hover { background: var(--dark); color: var(--white); box-shadow: none; }
+
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .reach-inner { grid-template-columns: 1fr; gap: 48px; }
+      .service-row { grid-template-columns: 60px 1fr; }
+      .service-arrow { display: none; }
+    }
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .reach-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Navigation ─── -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="Allayer" />
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="services.html" class="active">Payment Services</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── Page Hero ─── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-glow"></div>
+  <div class="page-hero-inner container">
+    <div class="section-tag fade-up">Payment Services</div>
+    <h1 class="fade-up fade-up-1">
+      Seamless global payments.<br/><span>Transparent pricing.</span>
+    </h1>
+    <p class="fade-up fade-up-2">
+      Experience enterprise-grade payment infrastructure with real-time rates, full pricing transparency, and the security your business deserves. Send payments in local currency to vendors & partners — quickly and without the hassle.
+    </p>
+    <div class="hero-badges fade-up fade-up-3">
+      <span class="badge-pill">✓ Real-time FX Rates</span>
+      <span class="badge-pill">✓ Enterprise-Grade Security</span>
+      <span class="badge-pill">✓ 180+ Countries</span>
+      <span class="badge-pill">✓ 60+ Currencies</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Services Main ─── -->
+<section class="services-overview">
+  <div class="services-overview-inner">
+    <div class="overview-header">
+      <div class="section-tag">Our Services</div>
+      <h2 class="section-title">Everything you need to<br/><span>move money globally</span></h2>
+      <p class="overview-lead">From one-off invoice payments to high-volume disbursements — our suite of services is built to handle the full complexity of cross-border finance.</p>
+    </div>
+    <div class="services-main">
+      <div class="service-row">
+        <div class="service-num">01</div>
+        <div class="service-body">
+          <h3>Invoice Settlements</h3>
+          <p>Seamless vendor payouts, from local partners to global suppliers. Eliminate payment delays, reduce FX friction, and give your AP team full visibility into every transaction status.</p>
+          <div class="service-tags">
+            <span class="service-tag-chip">B2B Payments</span>
+            <span class="service-tag-chip">Multi-Currency</span>
+            <span class="service-tag-chip">Real-time Tracking</span>
+          </div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">02</div>
+        <div class="service-body">
+          <h3>Treasury Management</h3>
+          <p>Optimise liquidity across currencies with seamless fund flows, smart FX management, and real-time visibility across your entire treasury. Make informed decisions with live dashboards and reporting.</p>
+          <div class="service-tags">
+            <span class="service-tag-chip">Liquidity Optimisation</span>
+            <span class="service-tag-chip">FX Management</span>
+            <span class="service-tag-chip">Real-time Visibility</span>
+          </div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">03</div>
+        <div class="service-body">
+          <h3>FX Conversion & Hedging Solutions</h3>
+          <p>Manage currency risk with competitive FX execution and tailored hedging strategies for greater certainty and control. Access real-time rates with tight spreads and flexible tenor options to match your exposure.</p>
+          <div class="service-tags">
+            <span class="service-tag-chip">Spot FX</span>
+            <span class="service-tag-chip">Forward Contracts</span>
+            <span class="service-tag-chip">Risk Management</span>
+            <span class="service-tag-chip">Competitive Rates</span>
+          </div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-row">
+        <div class="service-num">04</div>
+        <div class="service-body">
+          <h3>Bulk Payouts / Mass Disbursements</h3>
+          <p>Execute high-volume payments efficiently with automated processing and reliable global delivery. Whether it's payroll, supplier payments, or marketplace settlements — scale without limits.</p>
+          <div class="service-tags">
+            <span class="service-tag-chip">Automated Processing</span>
+            <span class="service-tag-chip">High Volume</span>
+            <span class="service-tag-chip">Global Delivery</span>
+            <span class="service-tag-chip">Payroll</span>
+          </div>
+        </div>
+        <div class="service-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Feature Highlights ─── -->
+<section class="features">
+  <div class="features-inner">
+    <div class="features-header">
+      <div class="section-tag" style="justify-content:center;">Platform Capabilities</div>
+      <h2 class="section-title" style="color:var(--white);text-align:center;">Why our platform<br/><span>stands apart</span></h2>
+      <p class="section-desc" style="color:#777;text-align:center;margin:0 auto;">Enterprise-grade infrastructure built for the demands of modern cross-border commerce.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat-card fade-up">
+        <div class="feat-icon">⚡</div>
+        <h3>Real-Time Processing</h3>
+        <p>Payments processed in real-time with instant confirmation and live status updates across all corridors.</p>
+      </div>
+      <div class="feat-card fade-up fade-up-1">
+        <div class="feat-icon">💱</div>
+        <h3>Competitive FX Rates</h3>
+        <p>Access institutional FX rates with full pricing transparency. See exactly what you pay before you send.</p>
+      </div>
+      <div class="feat-card fade-up fade-up-2">
+        <div class="feat-icon">🔒</div>
+        <h3>Bank-Grade Security</h3>
+        <p>End-to-end encryption, multi-factor authentication, and enterprise compliance standards protect every transaction.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon">🌐</div>
+        <h3>Global Reach</h3>
+        <p>Send to 180+ countries in 60+ currencies. Local bank account delivery in major markets worldwide.</p>
+      </div>
+      <div class="feat-card fade-up fade-up-1">
+        <div class="feat-icon">📋</div>
+        <h3>Compliance Built-In</h3>
+        <p>Automated AML, KYC, and regulatory checks across jurisdictions so you stay compliant without the overhead.</p>
+      </div>
+      <div class="feat-card fade-up fade-up-2">
+        <div class="feat-icon">🔗</div>
+        <h3>API Integration</h3>
+        <p>Integrate seamlessly into your existing ERP, accounting, or operations platform via our robust API.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Reach / Currencies ─── -->
+<section class="reach">
+  <div class="reach-inner">
+    <div>
+      <div class="section-tag">Our Reach</div>
+      <h2 class="section-title">Truly <span>global</span><br/>payment coverage</h2>
+      <p class="section-desc">Send payments in local currency to vendors and partners anywhere in the world — quickly and without the hassle.</p>
+      <div class="currency-chips">
+        <span class="currency-chip">USD</span>
+        <span class="currency-chip">EUR</span>
+        <span class="currency-chip">GBP</span>
+        <span class="currency-chip">HKD</span>
+        <span class="currency-chip">SGD</span>
+        <span class="currency-chip">JPY</span>
+        <span class="currency-chip">CNY</span>
+        <span class="currency-chip">AUD</span>
+        <span class="currency-chip">CAD</span>
+        <span class="currency-chip">CHF</span>
+        <span class="currency-chip">INR</span>
+        <span class="currency-chip">MYR</span>
+        <span class="currency-chip">THB</span>
+        <span class="currency-chip">IDR</span>
+        <span class="currency-chip">60+</span>
+      </div>
+    </div>
+    <div class="reach-stats">
+      <div class="reach-stat-card">
+        <div class="big-num">60+</div>
+        <div class="label">Currencies</div>
+      </div>
+      <div class="reach-stat-card dark">
+        <div class="big-num">180+</div>
+        <div class="label">Countries</div>
+      </div>
+      <div class="reach-stat-card dark">
+        <div class="big-num">24/7</div>
+        <div class="label">Always On</div>
+      </div>
+      <div class="reach-stat-card">
+        <div class="big-num">0</div>
+        <div class="label">Hidden Fees</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA Banner ─── -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <h2>Ready to simplify your global payments?</h2>
+    <p>Speak with our team to explore the right solution for your business needs.</p>
+    <a href="contact.html" class="btn-primary">Contact Us Today →</a>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Allayer" />
+      <p>Connecting you to global finance — delivering integrated solutions that unlock growth beyond borders.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Payment Services</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:support@allayer.asia">support@allayer.asia</a></li>
+        <li><a href="#">Hong Kong Office</a></li>
+        <li><a href="#">Unit B, 14/F, Magnet Place Tower 2</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Allayer. All rights reserved.</span>
+    <span>Powered by Allayer Financial Technology</span>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+</script>
+</body>
+</html>
