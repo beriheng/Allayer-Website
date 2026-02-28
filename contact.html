@@ -8,96 +8,74 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" href="logo.png" />
   <style>
-    /* ─── Page Hero ─── */
-    .page-hero {
-      padding: 160px 5% 100px;
-      background: var(--dark);
-      position: relative;
-      overflow: hidden;
+    /* ─── Contact Wrapper ─── */
+    .contact-page {
+      padding-top: 72px;
+      min-height: 100vh;
+      background: var(--light-grey);
     }
-    .page-hero-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(249,115,22,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(249,115,22,0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .page-hero-glow {
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
-      right: 5%; top: 50%;
-      transform: translateY(-50%);
-    }
-    .page-hero-inner {
-      position: relative; z-index: 2;
-      max-width: 700px;
-    }
-    .page-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 24px;
-    }
-    .page-hero h1 span { color: var(--orange); }
-    .page-hero p { font-size: 1.1rem; color: #aaa; line-height: 1.75; max-width: 520px; }
-
-    /* ─── Contact Section ─── */
-    .contact {
-      padding: 100px 5%;
-      background: var(--white);
+    .contact-section {
+      padding: 80px 5%;
     }
     .contact-inner {
       max-width: 1200px; margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
+      grid-template-columns: 1fr 1.5fr;
       gap: 80px;
       align-items: start;
     }
 
-    /* ─── Contact Info ─── */
-    .contact-info {}
-    .contact-info .section-tag { margin-bottom: 16px; }
-    .contact-info h2 { margin-bottom: 16px; }
-    .contact-info .section-desc { margin-bottom: 48px; }
-    .info-cards { display: flex; flex-direction: column; gap: 16px; }
+    /* ─── Contact Info Panel ─── */
+    .contact-info-panel {
+      position: sticky;
+      top: 100px;
+    }
+    .contact-info-panel .section-tag { margin-bottom: 12px; }
+    .contact-info-panel h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .contact-info-panel h2 span { color: var(--orange); }
+    .contact-info-panel > p {
+      font-size: 0.95rem;
+      color: var(--grey);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+    .info-cards { display: flex; flex-direction: column; gap: 14px; }
     .info-card {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       align-items: flex-start;
-      padding: 24px;
+      padding: 22px;
+      background: var(--white);
       border: 1px solid #eee;
       border-radius: 12px;
       transition: all 0.3s;
     }
-    .info-card:hover {
-      border-color: var(--orange-light);
-      background: var(--orange-pale);
-      transform: translateX(4px);
-    }
+    .info-card:hover { border-color: var(--orange-light); background: var(--orange-pale); }
     .info-card-icon {
-      width: 48px; height: 48px;
+      width: 44px; height: 44px;
       background: var(--orange);
       border-radius: 10px;
-      display: flex;
-      align-items: center; justify-content: center;
-      font-size: 1.3rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
       flex-shrink: 0;
     }
     .info-card-body h4 {
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--grey);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .info-card-body p, .info-card-body a {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--black);
       text-decoration: none;
       line-height: 1.6;
@@ -106,46 +84,37 @@
 
     /* ─── Contact Form ─── */
     .contact-form-wrap {
-      background: var(--light-grey);
+      background: var(--white);
       border-radius: 20px;
       padding: 48px;
       border: 1px solid #eee;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
     }
-    .form-header {
-      margin-bottom: 32px;
-    }
+    .form-header { margin-bottom: 32px; }
     .form-header h3 {
       font-family: var(--font-display);
       font-size: 1.4rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
-    .form-header p { font-size: 0.9rem; color: var(--grey); }
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .form-header p { font-size: 0.88rem; color: var(--grey); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
     .form-group.full { grid-column: span 2; }
     .form-group label {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--black);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
     .form-group label span { color: var(--orange); }
     .form-control {
-      background: var(--white);
-      border: 1.5px solid #e0e0e0;
+      background: var(--light-grey);
+      border: 1.5px solid #e8e8e8;
       border-radius: 8px;
       padding: 13px 16px;
       font-family: var(--font-body);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--black);
       transition: all 0.2s;
       outline: none;
@@ -153,11 +122,19 @@
     }
     .form-control:focus {
       border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(249,115,22,0.1);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
     }
     .form-control::placeholder { color: #bbb; }
     textarea.form-control { resize: vertical; min-height: 130px; }
-    select.form-control { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+    select.form-control {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      background-color: var(--light-grey);
+    }
     .form-submit { margin-top: 24px; }
     .btn-submit {
       width: 100%;
@@ -166,7 +143,7 @@
       padding: 15px 32px;
       border-radius: 8px;
       font-family: var(--font-body);
-      font-size: 1rem;
+      font-size: 0.97rem;
       font-weight: 600;
       border: none;
       cursor: pointer;
@@ -181,132 +158,24 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(249,115,22,0.35);
     }
-    .form-note {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--grey);
-      margin-top: 12px;
-    }
-    /* Success state */
+    .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+    .form-note { text-align: center; font-size: 0.76rem; color: #bbb; margin-top: 12px; }
     .success-msg {
       display: none;
       background: rgba(34,197,94,0.08);
-      border: 1px solid rgba(34,197,94,0.3);
+      border: 1px solid rgba(34,197,94,0.25);
       border-radius: 10px;
-      padding: 20px 24px;
+      padding: 18px 22px;
       color: #15803d;
+      font-size: 0.9rem;
       font-weight: 500;
       text-align: center;
       margin-top: 16px;
     }
 
-    /* ─── Map / HK Info ─── */
-    .hk-section {
-      padding: 80px 5%;
-      background: var(--dark);
-    }
-    .hk-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .hk-content .section-title { color: var(--white); }
-    .hk-content .section-desc { color: #777; }
-    .hk-detail {
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .hk-detail-row {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .hk-detail-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: rgba(249,115,22,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .hk-detail-text strong { display: block; color: var(--white); font-size: 0.88rem; margin-bottom: 4px; }
-    .hk-detail-text span { color: #777; font-size: 0.88rem; line-height: 1.6; }
-    .map-placeholder {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      height: 320px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-    .map-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(249,115,22,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(249,115,22,0.03) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .map-pin {
-      width: 56px; height: 56px;
-      background: var(--orange);
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 0 24px rgba(249,115,22,0.5);
-    }
-    .map-pin::after {
-      content: '';
-      width: 20px; height: 20px;
-      background: var(--dark);
-      border-radius: 50%;
-      transform: rotate(45deg);
-    }
-    .map-label {
-      position: relative; z-index: 2;
-      font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--white);
-      text-align: center;
-    }
-    .map-label small { display: block; color: #777; font-size: 0.78rem; font-weight: 400; margin-top: 4px; }
-    .map-view-btn {
-      position: relative; z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(249,115,22,0.15);
-      color: var(--orange);
-      border: 1px solid rgba(249,115,22,0.3);
-      padding: 8px 20px;
-      border-radius: 100px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .map-view-btn:hover { background: var(--orange); color: var(--white); }
-
     @media (max-width: 900px) {
-      .contact-inner, .hk-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .contact-info-panel { position: static; }
     }
     @media (max-width: 600px) {
       .form-grid { grid-template-columns: 1fr; }
@@ -326,169 +195,123 @@
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About Us</a></li>
     <li><a href="services.html">Payment Services</a></li>
-    <li><a href="contact.html" class="nav-cta active-cta">Contact Us</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+  <div class="hamburger" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
-<!-- ─── Page Hero ─── -->
-<section class="page-hero">
-  <div class="page-hero-bg"></div>
-  <div class="page-hero-glow"></div>
-  <div class="page-hero-inner container">
-    <div class="section-tag fade-up">Contact Us</div>
-    <h1 class="fade-up fade-up-1">Let's build something<br/><span>great together</span></h1>
-    <p class="fade-up fade-up-2">Our team is ready to help you find the right payment solution for your business. Reach out — we typically respond within one business day.</p>
-  </div>
-</section>
+<!-- ─── Contact Page ─── -->
+<div class="contact-page">
+  <section class="contact-section">
+    <div class="contact-inner">
 
-<!-- ─── Contact Section ─── -->
-<section class="contact">
-  <div class="contact-inner">
-
-    <!-- Info Column -->
-    <div class="contact-info">
-      <div class="section-tag">Get in Touch</div>
-      <h2 class="section-title">Contact<br/><span>Information</span></h2>
-      <p class="section-desc">Whether you have a question about our services, pricing, or want to start a conversation — we're here.</p>
-      <div class="info-cards">
-        <div class="info-card">
-          <div class="info-card-icon">📍</div>
-          <div class="info-card-body">
-            <h4>Hong Kong Office</h4>
-            <p>Unit B, 14/F, Magnet Place Tower 2<br/>No. 38-42 Kwai Fung Crescent<br/>Kwai Chung, Hong Kong</p>
+      <!-- Info Panel -->
+      <div class="contact-info-panel fade-up">
+        <div class="section-tag">Contact Us</div>
+        <h2>Let's start a<br/><span>conversation</span></h2>
+        <p>Our team is ready to help you find the right payment solution. We typically respond within one business day.</p>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-card-icon">📍</div>
+            <div class="info-card-body">
+              <h4>Hong Kong Office</h4>
+              <p>Unit B, 14/F, Magnet Place Tower 2<br/>No. 38-42 Kwai Fung Crescent<br/>Kwai Chung, Hong Kong</p>
+            </div>
           </div>
-        </div>
-        <div class="info-card">
-          <div class="info-card-icon">✉️</div>
-          <div class="info-card-body">
-            <h4>Email Us</h4>
-            <a href="mailto:support@allayer.asia">support@allayer.asia</a>
+          <div class="info-card">
+            <div class="info-card-icon">✉️</div>
+            <div class="info-card-body">
+              <h4>Email</h4>
+              <a href="mailto:support@allayer.asia">support@allayer.asia</a>
+            </div>
           </div>
-        </div>
-        <div class="info-card">
-          <div class="info-card-icon">⏱️</div>
-          <div class="info-card-body">
-            <h4>Response Time</h4>
-            <p>We typically respond within 1 business day. For urgent matters, please mark your email accordingly.</p>
+          <div class="info-card">
+            <div class="info-card-icon">⏱️</div>
+            <div class="info-card-body">
+              <h4>Response Time</h4>
+              <p>Within 1 business day.<br/>Mon – Fri, 9:00 AM – 6:00 PM HKT</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Form Column -->
-    <div class="contact-form-wrap fade-up fade-up-1">
-      <div class="form-header">
-        <h3>Send us a message</h3>
-        <p>Tell us about your business needs and we'll get back to you.</p>
+      <!-- Form -->
+      <div class="contact-form-wrap fade-up fade-up-1">
+        <div class="form-header">
+          <h3>Send us a message</h3>
+          <p>Tell us about your business needs and we'll get back to you shortly.</p>
+        </div>
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label>First Name <span>*</span></label>
+              <input type="text" class="form-control" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label>Last Name <span>*</span></label>
+              <input type="text" class="form-control" placeholder="Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Work Email <span>*</span></label>
+              <input type="email" class="form-control" placeholder="john@company.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" class="form-control" placeholder="+852 1234 5678" />
+            </div>
+            <div class="form-group full">
+              <label>Company Name <span>*</span></label>
+              <input type="text" class="form-control" placeholder="Your Company Ltd." required />
+            </div>
+            <div class="form-group full">
+              <label>Service Interest</label>
+              <select class="form-control">
+                <option value="" disabled selected>Select a service...</option>
+                <option>Invoice Settlements</option>
+                <option>Treasury Management</option>
+                <option>FX Conversion & Hedging</option>
+                <option>Bulk Payouts / Mass Disbursements</option>
+                <option>General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>How can we help? <span>*</span></label>
+              <textarea class="form-control" placeholder="Tell us about your payment needs, currencies involved, monthly volumes, or any specific challenges you're facing..." required></textarea>
+            </div>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-submit" id="submitBtn">
+              Send Message →
+            </button>
+          </div>
+          <p class="form-note">By submitting, you agree to our Privacy Policy. We'll never share your information.</p>
+          <div class="success-msg" id="successMsg">
+            ✅ Your message has been sent! We'll be in touch within one business day.
+          </div>
+        </form>
       </div>
-      <form id="contactForm" onsubmit="handleSubmit(event)">
-        <div class="form-grid">
-          <div class="form-group">
-            <label>First Name <span>*</span></label>
-            <input type="text" class="form-control" placeholder="John" required />
-          </div>
-          <div class="form-group">
-            <label>Last Name <span>*</span></label>
-            <input type="text" class="form-control" placeholder="Smith" required />
-          </div>
-          <div class="form-group">
-            <label>Work Email <span>*</span></label>
-            <input type="email" class="form-control" placeholder="john@company.com" required />
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" class="form-control" placeholder="+852 1234 5678" />
-          </div>
-          <div class="form-group full">
-            <label>Company Name <span>*</span></label>
-            <input type="text" class="form-control" placeholder="Your Company Ltd." required />
-          </div>
-          <div class="form-group full">
-            <label>Service Interest</label>
-            <select class="form-control">
-              <option value="" disabled selected>Select a service...</option>
-              <option>Invoice Settlements</option>
-              <option>Treasury Management</option>
-              <option>FX Conversion & Hedging</option>
-              <option>Bulk Payouts / Mass Disbursements</option>
-              <option>General Enquiry</option>
-            </select>
-          </div>
-          <div class="form-group full">
-            <label>How can we help you? <span>*</span></label>
-            <textarea class="form-control" placeholder="Tell us about your payment needs, currencies involved, monthly volumes, or any specific challenges you're facing..." required></textarea>
-          </div>
-        </div>
-        <div class="form-submit">
-          <button type="submit" class="btn-submit">
-            Send Message →
-          </button>
-        </div>
-        <p class="form-note">By submitting, you agree to our Privacy Policy. We'll never share your information.</p>
-        <div class="success-msg" id="successMsg">
-          ✅ Your message has been sent! We'll be in touch within one business day.
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
 
-<!-- ─── HK Office ─── -->
-<section class="hk-section">
-  <div class="hk-inner">
-    <div class="hk-content">
-      <div class="section-tag">Our Location</div>
-      <h2 class="section-title">Hong Kong <span>Office</span></h2>
-      <p class="section-desc">Strategically located in Hong Kong, one of Asia's premier financial hubs — connecting businesses across the region and beyond.</p>
-      <div class="hk-detail">
-        <div class="hk-detail-row">
-          <div class="hk-detail-icon">🏢</div>
-          <div class="hk-detail-text">
-            <strong>Address</strong>
-            <span>Unit B, 14/F, Magnet Place Tower 2<br/>No. 38-42 Kwai Fung Crescent, Kwai Chung</span>
-          </div>
-        </div>
-        <div class="hk-detail-row">
-          <div class="hk-detail-icon">✉️</div>
-          <div class="hk-detail-text">
-            <strong>Email</strong>
-            <span><a href="mailto:support@allayer.asia" style="color:var(--orange);text-decoration:none;">support@allayer.asia</a></span>
-          </div>
-        </div>
-        <div class="hk-detail-row">
-          <div class="hk-detail-icon">🕐</div>
-          <div class="hk-detail-text">
-            <strong>Business Hours</strong>
-            <span>Mon – Fri: 9:00 AM – 6:00 PM (HKT)</span>
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="map-placeholder">
-      <div class="map-pin"></div>
-      <div class="map-label">
-        Allayer — Hong Kong
-        <small>Magnet Place Tower 2, Kwai Chung</small>
-      </div>
-      <a href="https://maps.google.com/?q=Magnet+Place+Tower+2,+Kwai+Chung,+Hong+Kong" target="_blank" class="map-view-btn">
-        📍 View on Google Maps
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <!-- ─── Footer ─── -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
       <img src="logo.png" alt="Allayer" />
-      <p>Connecting you to global finance — delivering integrated solutions that unlock growth beyond borders.</p>
+      <div class="footer-brand-tagline">Powering the Next Era of<br/>Financial Connectivity</div>
+      <p>Allayer Limited is a subsidiary of Ibanana Limited, a registered FINTRAC MSB: C100000387.</p>
+      <div class="footer-social">
+        <a href="#" title="LinkedIn">in</a>
+        <a href="#" title="Twitter / X">𝕏</a>
+        <a href="#" title="Facebook">f</a>
+      </div>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4>Quick Links</h4>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -499,15 +322,19 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:support@allayer.asia">support@allayer.asia</a></li>
-        <li><a href="#">Hong Kong Office</a></li>
-        <li><a href="#">Unit B, 14/F, Magnet Place Tower 2</a></li>
+        <li>
+          <span class="f-icon">✉️</span>
+          <a href="mailto:support@allayer.asia">support@allayer.asia</a>
+        </li>
+        <li>
+          <span class="f-icon">📍</span>
+          <span>Unit B, 14/F, Magnet Place Tower 2, No. 38-42 Kwai Fung Crescent, Kwai Chung, Hong Kong</span>
+        </li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Allayer. All rights reserved.</span>
-    <span>Powered by Allayer Financial Technology</span>
+    <span>© 2026 Allayer Limited. All rights reserved.</span>
   </div>
 </footer>
 
@@ -518,7 +345,7 @@
 
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('.btn-submit');
+    const btn = document.getElementById('submitBtn');
     btn.textContent = 'Sending...';
     btn.disabled = true;
     setTimeout(() => {

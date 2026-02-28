@@ -32,170 +32,96 @@
     .page-hero-inner {
       position: relative; z-index: 2;
       max-width: 800px;
+      /* left-aligned, no centering */
     }
     .page-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800;
+      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+      font-weight: 700;
       color: var(--white);
-      line-height: 1.1;
+      line-height: 1.12;
       margin-bottom: 24px;
     }
     .page-hero h1 span { color: var(--orange); }
-    .page-hero p { font-size: 1.1rem; color: #aaa; line-height: 1.75; max-width: 580px; }
-    .hero-badges {
-      display: flex; gap: 12px; flex-wrap: wrap;
-      margin-top: 36px;
-    }
-    .badge-pill {
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(249,115,22,0.1);
-      border: 1px solid rgba(249,115,22,0.25);
-      color: var(--orange-light);
-      padding: 8px 16px;
-      border-radius: 100px;
-      font-size: 0.82rem;
-      font-weight: 500;
-    }
+    .page-hero p { font-size: 1.05rem; color: #aaa; line-height: 1.8; max-width: 580px; font-weight: 300; }
 
-    /* ─── Services Overview ─── */
-    .services-overview {
+    /* ─── Services List ─── */
+    .services-section {
       padding: 100px 5%;
       background: var(--white);
     }
-    .services-overview-inner { max-width: 1200px; margin: 0 auto; }
-    .overview-header { margin-bottom: 60px; }
+    .services-inner { max-width: 1200px; margin: 0 auto; }
+    .services-header { margin-bottom: 56px; }
     .overview-lead {
-      font-size: 1.15rem;
+      font-size: 1rem;
       color: var(--grey);
       line-height: 1.8;
-      max-width: 700px;
-      margin-top: 20px;
+      max-width: 680px;
+      margin-top: 16px;
     }
 
-    /* Main Services Grid */
-    .services-main {
+    .services-list {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2px;
-      background: #eee;
+      background: #e8e8e8;
       border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 48px;
     }
     .service-row {
       background: var(--white);
       display: grid;
-      grid-template-columns: 80px 1fr auto;
-      gap: 0;
+      grid-template-columns: 72px 1fr 48px;
       align-items: center;
       transition: all 0.3s;
-      cursor: default;
     }
     .service-row:hover { background: var(--orange-pale); }
     .service-row:hover .service-num { background: var(--orange); color: var(--white); }
+    .service-row:hover .service-arrow { opacity: 1; }
     .service-num {
       background: var(--light-grey);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--orange);
-      height: 100%;
-      min-height: 110px;
+      min-height: 120px;
+      align-self: stretch;
       transition: all 0.3s;
     }
     .service-body { padding: 28px 32px; }
     .service-body h3 {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       margin-bottom: 8px;
+      color: var(--black);
     }
-    .service-body p { font-size: 0.9rem; color: var(--grey); line-height: 1.65; }
-    .service-tags {
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin-top: 12px;
-    }
+    .service-body p { font-size: 0.9rem; color: var(--grey); line-height: 1.7; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
     .service-tag-chip {
       background: var(--orange-pale);
       color: var(--orange-deep);
       padding: 3px 10px;
       border-radius: 100px;
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       font-weight: 600;
       border: 1px solid var(--orange-light);
     }
     .service-arrow {
-      padding: 28px 32px;
-      font-size: 1.5rem;
+      padding: 28px 16px;
+      font-size: 1.3rem;
       color: var(--orange);
       opacity: 0;
       transition: opacity 0.2s;
     }
-    .service-row:hover .service-arrow { opacity: 1; }
 
-    /* ─── Feature Highlights ─── */
-    .features {
-      padding: 100px 5%;
-      background: var(--dark);
-      position: relative;
-      overflow: hidden;
-    }
-    .features::before {
-      content: '';
-      position: absolute;
-      left: -200px; top: 50%;
-      transform: translateY(-50%);
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
-    }
-    .features-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
-    .features-header { text-align: center; margin-bottom: 64px; }
-    .features-header .section-title { color: var(--white); }
-    .features-header .section-desc { color: #777; margin: 0 auto; }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .feat-card {
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 14px;
-      padding: 36px 28px;
-      background: rgba(255,255,255,0.02);
-      transition: all 0.3s;
-    }
-    .feat-card:hover {
-      background: rgba(249,115,22,0.06);
-      border-color: rgba(249,115,22,0.3);
-      transform: translateY(-4px);
-    }
-    .feat-icon {
-      width: 52px; height: 52px;
-      background: rgba(249,115,22,0.12);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      border: 1px solid rgba(249,115,22,0.2);
-    }
-    .feat-card h3 {
-      font-family: var(--font-display);
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-    .feat-card p { font-size: 0.88rem; color: #777; line-height: 1.7; }
-
-    /* ─── Currencies / Reach ─── */
+    /* ─── Reach / Currencies ─── */
     .reach {
       padding: 100px 5%;
-      background: var(--white);
+      background: var(--light-grey);
     }
     .reach-inner {
       max-width: 1200px; margin: 0 auto;
@@ -204,56 +130,49 @@
       gap: 80px;
       align-items: center;
     }
+    .currency-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .currency-chip {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--black);
+      border: 1px solid #e0e0e0;
+      transition: all 0.2s;
+    }
+    .currency-chip:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
+
     .reach-stats {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
     .reach-stat-card {
-      background: var(--light-grey);
       border-radius: 14px;
       padding: 32px 24px;
       text-align: center;
       border: 2px solid transparent;
       transition: all 0.3s;
     }
-    .reach-stat-card:hover {
-      border-color: var(--orange);
-      background: var(--orange-pale);
-    }
+    .reach-stat-card.light { background: var(--white); border-color: #eee; }
+    .reach-stat-card.dark-card { background: var(--dark); }
+    .reach-stat-card.full { grid-column: span 2; background: var(--dark); border-radius: 14px; }
+    .reach-stat-card:hover { border-color: var(--orange); }
     .reach-stat-card .big-num {
       font-family: var(--font-display);
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 800;
       color: var(--orange);
       line-height: 1;
       margin-bottom: 8px;
     }
-    .reach-stat-card .label { font-size: 0.85rem; color: var(--grey); font-weight: 500; }
-    .reach-stat-card.dark {
-      background: var(--dark);
+    .reach-stat-card .label {
+      font-size: 0.85rem;
+      font-weight: 500;
     }
-    .reach-stat-card.dark .big-num { color: var(--orange); }
-    .reach-stat-card.dark .label { color: #777; }
-    .currency-chips {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin-top: 24px;
-    }
-    .currency-chip {
-      background: var(--light-grey);
-      border-radius: 8px;
-      padding: 6px 14px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--black);
-      border: 1px solid #e5e5e5;
-      transition: all 0.2s;
-    }
-    .currency-chip:hover {
-      background: var(--orange);
-      color: var(--white);
-      border-color: var(--orange);
-    }
+    .reach-stat-card.light .label { color: var(--grey); }
+    .reach-stat-card.dark-card .label, .reach-stat-card.full .label { color: #777; }
 
     /* ─── CTA Banner ─── */
     .cta-banner {
@@ -273,24 +192,17 @@
     .cta-banner-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
     .cta-banner h2 {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 16px;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700; color: var(--white); margin-bottom: 16px;
     }
-    .cta-banner p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 36px; }
+    .cta-banner p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 36px; }
     .cta-banner .btn-primary { background: var(--white); color: var(--orange); }
     .cta-banner .btn-primary:hover { background: var(--dark); color: var(--white); box-shadow: none; }
 
     @media (max-width: 900px) {
-      .features-grid { grid-template-columns: 1fr 1fr; }
       .reach-inner { grid-template-columns: 1fr; gap: 48px; }
-      .service-row { grid-template-columns: 60px 1fr; }
+      .service-row { grid-template-columns: 56px 1fr; }
       .service-arrow { display: none; }
-    }
-    @media (max-width: 600px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .reach-stats { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -307,7 +219,7 @@
     <li><a href="services.html" class="active">Payment Services</a></li>
     <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+  <div class="hamburger" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -322,26 +234,20 @@
       Seamless global payments.<br/><span>Transparent pricing.</span>
     </h1>
     <p class="fade-up fade-up-2">
-      Experience enterprise-grade payment infrastructure with real-time rates, full pricing transparency, and the security your business deserves. Send payments in local currency to vendors & partners — quickly and without the hassle.
+      Experience enterprise-grade payment infrastructure with real-time rates, full pricing transparency, and the security your business deserves. Send payments in local currency to vendors &amp; partners — quickly and without the hassle.
     </p>
-    <div class="hero-badges fade-up fade-up-3">
-      <span class="badge-pill">✓ Real-time FX Rates</span>
-      <span class="badge-pill">✓ Enterprise-Grade Security</span>
-      <span class="badge-pill">✓ 180+ Countries</span>
-      <span class="badge-pill">✓ 60+ Currencies</span>
-    </div>
   </div>
 </section>
 
-<!-- ─── Services Main ─── -->
-<section class="services-overview">
-  <div class="services-overview-inner">
-    <div class="overview-header">
+<!-- ─── Services List ─── -->
+<section class="services-section">
+  <div class="services-inner">
+    <div class="services-header">
       <div class="section-tag">Our Services</div>
-      <h2 class="section-title">Everything you need to<br/><span>move money globally</span></h2>
+      <h2 class="section-title">Simplifying Global Payments,<br/><span>Every Step of the Way</span></h2>
       <p class="overview-lead">From one-off invoice payments to high-volume disbursements — our suite of services is built to handle the full complexity of cross-border finance.</p>
     </div>
-    <div class="services-main">
+    <div class="services-list">
       <div class="service-row">
         <div class="service-num">01</div>
         <div class="service-body">
@@ -372,7 +278,7 @@
         <div class="service-num">03</div>
         <div class="service-body">
           <h3>FX Conversion & Hedging Solutions</h3>
-          <p>Manage currency risk with competitive FX execution and tailored hedging strategies for greater certainty and control. Access real-time rates with tight spreads and flexible tenor options to match your exposure.</p>
+          <p>Manage currency risk with competitive FX execution and tailored hedging strategies for greater certainty and control. Access real-time rates with tight spreads and flexible tenor options.</p>
           <div class="service-tags">
             <span class="service-tag-chip">Spot FX</span>
             <span class="service-tag-chip">Forward Contracts</span>
@@ -395,49 +301,6 @@
           </div>
         </div>
         <div class="service-arrow">→</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── Feature Highlights ─── -->
-<section class="features">
-  <div class="features-inner">
-    <div class="features-header">
-      <div class="section-tag" style="justify-content:center;">Platform Capabilities</div>
-      <h2 class="section-title" style="color:var(--white);text-align:center;">Why our platform<br/><span>stands apart</span></h2>
-      <p class="section-desc" style="color:#777;text-align:center;margin:0 auto;">Enterprise-grade infrastructure built for the demands of modern cross-border commerce.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feat-card fade-up">
-        <div class="feat-icon">⚡</div>
-        <h3>Real-Time Processing</h3>
-        <p>Payments processed in real-time with instant confirmation and live status updates across all corridors.</p>
-      </div>
-      <div class="feat-card fade-up fade-up-1">
-        <div class="feat-icon">💱</div>
-        <h3>Competitive FX Rates</h3>
-        <p>Access institutional FX rates with full pricing transparency. See exactly what you pay before you send.</p>
-      </div>
-      <div class="feat-card fade-up fade-up-2">
-        <div class="feat-icon">🔒</div>
-        <h3>Bank-Grade Security</h3>
-        <p>End-to-end encryption, multi-factor authentication, and enterprise compliance standards protect every transaction.</p>
-      </div>
-      <div class="feat-card fade-up">
-        <div class="feat-icon">🌐</div>
-        <h3>Global Reach</h3>
-        <p>Send to 180+ countries in 60+ currencies. Local bank account delivery in major markets worldwide.</p>
-      </div>
-      <div class="feat-card fade-up fade-up-1">
-        <div class="feat-icon">📋</div>
-        <h3>Compliance Built-In</h3>
-        <p>Automated AML, KYC, and regulatory checks across jurisdictions so you stay compliant without the overhead.</p>
-      </div>
-      <div class="feat-card fade-up fade-up-2">
-        <div class="feat-icon">🔗</div>
-        <h3>API Integration</h3>
-        <p>Integrate seamlessly into your existing ERP, accounting, or operations platform via our robust API.</p>
       </div>
     </div>
   </div>
@@ -469,19 +332,15 @@
       </div>
     </div>
     <div class="reach-stats">
-      <div class="reach-stat-card">
+      <div class="reach-stat-card light">
         <div class="big-num">60+</div>
         <div class="label">Currencies</div>
       </div>
-      <div class="reach-stat-card dark">
+      <div class="reach-stat-card dark-card">
         <div class="big-num">180+</div>
         <div class="label">Countries</div>
       </div>
-      <div class="reach-stat-card dark">
-        <div class="big-num">24/7</div>
-        <div class="label">Always On</div>
-      </div>
-      <div class="reach-stat-card">
+      <div class="reach-stat-card full">
         <div class="big-num">0</div>
         <div class="label">Hidden Fees</div>
       </div>
@@ -503,10 +362,16 @@
   <div class="footer-top">
     <div class="footer-brand">
       <img src="logo.png" alt="Allayer" />
-      <p>Connecting you to global finance — delivering integrated solutions that unlock growth beyond borders.</p>
+      <div class="footer-brand-tagline">Powering the Next Era of<br/>Financial Connectivity</div>
+      <p>Allayer Limited is a subsidiary of Ibanana Limited, a registered FINTRAC MSB: C100000387.</p>
+      <div class="footer-social">
+        <a href="#" title="LinkedIn">in</a>
+        <a href="#" title="Twitter / X">𝕏</a>
+        <a href="#" title="Facebook">f</a>
+      </div>
     </div>
     <div class="footer-col">
-      <h4>Company</h4>
+      <h4>Quick Links</h4>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
@@ -517,15 +382,19 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:support@allayer.asia">support@allayer.asia</a></li>
-        <li><a href="#">Hong Kong Office</a></li>
-        <li><a href="#">Unit B, 14/F, Magnet Place Tower 2</a></li>
+        <li>
+          <span class="f-icon">✉️</span>
+          <a href="mailto:support@allayer.asia">support@allayer.asia</a>
+        </li>
+        <li>
+          <span class="f-icon">📍</span>
+          <span>Unit B, 14/F, Magnet Place Tower 2, No. 38-42 Kwai Fung Crescent, Kwai Chung, Hong Kong</span>
+        </li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Allayer. All rights reserved.</span>
-    <span>Powered by Allayer Financial Technology</span>
+    <span>© 2026 Allayer Limited. All rights reserved.</span>
   </div>
 </footer>
 
