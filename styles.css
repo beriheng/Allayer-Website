@@ -45,7 +45,15 @@ body {
   transition: all 0.3s ease;
 }
 .nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.08); }
-.nav-logo img { height: 36px; width: auto; display: block; }
+
+/* ── Logo: bigger, blends naturally into nav bg ── */
+.nav-logo img {
+  height: 48px;        /* was 36px — now bigger */
+  width: auto;
+  display: block;
+  /* No filter — logo shows in its natural colours on white nav */
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -165,35 +173,47 @@ footer {
 }
 .footer-top {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  /* Wider first column so brand text has room to breathe */
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 60px;
   padding-bottom: 48px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
   margin-bottom: 32px;
 }
-.footer-brand img { height: 34px; filter: brightness(0) invert(1); margin-bottom: 16px; }
+
+/* ── Footer logo: white pill background so it shows on dark ── */
+.footer-logo-wrap {
+  display: inline-block;
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 18px;
+}
+.footer-logo-wrap img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
 .footer-brand-tagline {
   font-family: var(--font-display);
-  font-size: 0.98rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--white);
   margin-bottom: 10px;
-  line-height: 1.4;
+  line-height: 1.45;
+  /* No max-width — let it expand naturally in the wider column */
 }
-.footer-brand p { font-size: 0.84rem; color: #666; line-height: 1.7; max-width: 280px; margin-bottom: 16px; }
-.footer-social { display: flex; gap: 10px; margin-top: 8px; }
-.footer-social a {
-  width: 34px; height: 34px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex; align-items: center; justify-content: center;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: all 0.2s;
-  color: #aaa;
+.footer-brand p {
+  font-size: 0.84rem;
+  color: #666;
+  line-height: 1.7;
+  /* Removed max-width so text breathes in the wider column */
+  margin-bottom: 0;
 }
-.footer-social a:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+/* Social icons removed */
+
 .footer-col h4 {
   font-family: var(--font-display);
   font-size: 0.78rem;
