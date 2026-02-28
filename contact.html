@@ -7,6 +7,7 @@
   <meta name="description" content="Get in touch with Allayer. Our team is ready to help you unlock smarter global payments." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
   <style>
     /* ─── Contact Wrapper ─── */
@@ -136,7 +137,16 @@
       background-position: right 14px center;
       background-color: var(--light-grey);
     }
-    .form-submit { margin-top: 24px; }
+    .recaptcha-wrap { margin-top: 8px; }
+    .captcha-error {
+      display: none;
+      color: #dc2626;
+      font-size: 0.78rem;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    /* Scale reCAPTCHA to fit neatly */
+    .g-recaptcha { transform-origin: left top; }
     .btn-submit {
       width: 100%;
       background: var(--orange);
@@ -282,6 +292,13 @@
               <textarea class="form-control" placeholder="Tell us about your payment needs, currencies involved, monthly volumes, or any specific challenges you're facing..." required></textarea>
             </div>
           </div>
+
+          <!-- ─── reCAPTCHA ─── -->
+          <div class="form-group full recaptcha-wrap">
+            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_HERE"></div>
+            <p class="captcha-error" id="captchaError">Please complete the CAPTCHA to continue.</p>
+          </div>
+
           <div class="form-submit">
             <button type="submit" class="btn-submit" id="submitBtn">
               Send Message →
@@ -343,6 +360,15 @@
 
   function handleSubmit(e) {
     e.preventDefault();
+    const captchaResponse = grecaptcha.getResponse();
+    const captchaError = document.getElementById('captchaError');
+
+    if (!captchaResponse) {
+      captchaError.style.display = 'block';
+      return;
+    }
+    captchaError.style.display = 'none';
+
     const btn = document.getElementById('submitBtn');
     btn.textContent = 'Sending...';
     btn.disabled = true;
