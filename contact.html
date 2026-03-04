@@ -184,31 +184,31 @@
           <h3>Send us a message</h3>
           <p>Tell us about your business needs and we'll get back to you shortly.</p>
         </div>
-        <form id="contactForm" onsubmit="handleSubmit(event)">
+        <form id="contactForm" action="https://formspree.io/f/xreanljd" method="POST" onsubmit="handleSubmit(event)">
           <div class="form-grid">
             <div class="form-group">
               <label>First Name <span>*</span></label>
-              <input type="text" class="form-control" placeholder="John" required />
+              <input type="text" name="first_name" class="form-control" placeholder="John" required />
             </div>
             <div class="form-group">
               <label>Last Name <span>*</span></label>
-              <input type="text" class="form-control" placeholder="Smith" required />
+              <input type="text" name="last_name" class="form-control" placeholder="Smith" required />
             </div>
             <div class="form-group">
               <label>Work Email <span>*</span></label>
-              <input type="email" class="form-control" placeholder="john@company.com" required />
+              <input type="email" name="email" class="form-control" placeholder="john@company.com" required />
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" class="form-control" placeholder="+852 1234 5678" />
+              <input type="tel" name="phone" class="form-control" placeholder="+852 1234 5678" />
             </div>
             <div class="form-group full">
               <label>Company Name <span>*</span></label>
-              <input type="text" class="form-control" placeholder="Your Company Ltd." required />
+              <input type="text" name="company" class="form-control" placeholder="Your Company Ltd." required />
             </div>
             <div class="form-group full">
               <label>Service Interest</label>
-              <select class="form-control">
+              <select name="service" class="form-control">
                 <option value="" disabled selected>Select a service...</option>
                 <option>Invoice Settlements</option>
                 <option>Treasury Management</option>
@@ -219,7 +219,7 @@
             </div>
             <div class="form-group full">
               <label>How can we help? <span>*</span></label>
-              <textarea class="form-control" placeholder="Tell us about your payment needs, currencies involved, monthly volumes, or any specific challenges you're facing..." required></textarea>
+              <textarea name="message" class="form-control" placeholder="Tell us about your payment needs, currencies involved, monthly volumes, or any specific challenges you're facing..." required></textarea>
             </div>
           </div>
 
@@ -271,12 +271,29 @@
   function handleSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
+    const form = document.getElementById('contactForm');
     btn.textContent = 'Sending...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = '✓ Sent!';
-      document.getElementById('successMsg').style.display = 'block';
-    }, 1200);
+
+    fetch('https://formspree.io/f/xreanljd', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) {
+        btn.textContent = '✓ Sent!';
+        document.getElementById('successMsg').style.display = 'block';
+        form.reset();
+      } else {
+        btn.textContent = 'Send Message →';
+        btn.disabled = false;
+        alert('Something went wrong. Please email us directly at support@allayer.asia');
+      }
+    }).catch(() => {
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      alert('Something went wrong. Please email us directly at support@allayer.asia');
+    });
   }
 </script>
 </body>
