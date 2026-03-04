@@ -4,184 +4,117 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us – Allayer</title>
-  <meta name="description" content="Get in touch with Allayer. Our team is ready to help you unlock smarter global payments." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <style>
-    /* ─── Contact Wrapper ─── */
     .contact-page {
       padding-top: 72px;
       min-height: 100vh;
-      background: var(--light-grey);
+      background: var(--dark);
     }
-    .contact-section {
-      padding: 80px 5%;
-    }
+    .contact-section { padding: 80px 5%; }
     .contact-inner {
       max-width: 1200px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 80px;
-      align-items: start;
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start;
     }
 
-    /* ─── Contact Info Panel ─── */
-    .contact-info-panel {
-      position: sticky;
-      top: 100px;
-    }
-    .contact-info-panel .section-tag { margin-bottom: 12px; }
+    /* ─── Info Panel ─── */
+    .contact-info-panel { position: sticky; top: 100px; }
     .contact-info-panel h2 {
       font-family: var(--font-display);
       font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 16px;
+      font-weight: 700; line-height: 1.2; margin-bottom: 16px; color: var(--white);
     }
-    .contact-info-panel h2 span { color: var(--orange); }
-    .contact-info-panel > p {
-      font-size: 0.95rem;
-      color: var(--grey);
-      line-height: 1.75;
-      margin-bottom: 40px;
-    }
+    .contact-info-panel h2 span { color: var(--green); }
+    .contact-info-panel > p { font-size: 0.95rem; color: #555; line-height: 1.75; margin-bottom: 40px; }
     .info-cards { display: flex; flex-direction: column; gap: 14px; }
     .info-card {
-      display: flex;
-      gap: 18px;
-      align-items: flex-start;
+      display: flex; gap: 18px; align-items: flex-start;
       padding: 22px;
-      background: var(--white);
-      border: 1px solid #eee;
-      border-radius: 12px;
-      transition: all 0.3s;
+      background: var(--dark-3);
+      border: 1px solid rgba(34,255,85,0.08);
+      border-radius: 12px; transition: all 0.3s;
     }
-    .info-card:hover { border-color: var(--orange-light); background: var(--orange-pale); }
+    .info-card:hover { border-color: rgba(34,255,85,0.25); background: var(--dark-4); }
     .info-card-icon {
       width: 44px; height: 44px;
-      background: var(--orange);
+      background: rgba(34,255,85,0.1);
+      border: 1px solid rgba(34,255,85,0.2);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
+      font-size: 1.2rem; flex-shrink: 0;
     }
     .info-card-body h4 {
-      font-family: var(--font-display);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--grey);
-      margin-bottom: 5px;
+      font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 5px;
     }
     .info-card-body p, .info-card-body a {
-      font-size: 0.9rem;
-      color: var(--black);
-      text-decoration: none;
-      line-height: 1.6;
+      font-size: 0.9rem; color: #aaa; text-decoration: none; line-height: 1.6;
     }
-    .info-card-body a:hover { color: var(--orange); }
+    .info-card-body a:hover { color: var(--green); }
 
-    /* ─── Contact Form ─── */
+    /* ─── Form ─── */
     .contact-form-wrap {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 48px;
-      border: 1px solid #eee;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      background: var(--dark-2);
+      border-radius: 20px; padding: 48px;
+      border: 1px solid rgba(34,255,85,0.08);
     }
     .form-header { margin-bottom: 32px; }
-    .form-header h3 {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .form-header p { font-size: 0.88rem; color: var(--grey); }
+    .form-header h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; margin-bottom: 6px; color: var(--white); }
+    .form-header p { font-size: 0.88rem; color: #555; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 7px; }
     .form-group.full { grid-column: span 2; }
-    .form-group label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: 0.03em;
-    }
-    .form-group label span { color: var(--orange); }
+    .form-group label { font-size: 0.8rem; font-weight: 600; color: #888; letter-spacing: 0.03em; }
+    .form-group label span { color: var(--green); }
     .form-control {
-      background: var(--light-grey);
-      border: 1.5px solid #e8e8e8;
-      border-radius: 8px;
-      padding: 13px 16px;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: var(--black);
-      transition: all 0.2s;
-      outline: none;
-      width: 100%;
+      background: var(--dark-3);
+      border: 1.5px solid rgba(255,255,255,0.06);
+      border-radius: 8px; padding: 13px 16px;
+      font-family: var(--font-body); font-size: 0.9rem; color: var(--white);
+      transition: all 0.2s; outline: none; width: 100%;
     }
     .form-control:focus {
-      border-color: var(--orange);
-      background: var(--white);
-      box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
+      border-color: var(--green);
+      background: var(--dark-4);
+      box-shadow: 0 0 0 3px rgba(34,255,85,0.08);
     }
-    .form-control::placeholder { color: #bbb; }
+    .form-control::placeholder { color: #333; }
     textarea.form-control { resize: vertical; min-height: 130px; }
     select.form-control {
-      appearance: none;
-      cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-color: var(--light-grey);
+      appearance: none; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      background-color: var(--dark-3);
     }
+    select.form-control option { background: var(--dark-3); color: var(--white); }
+
     .recaptcha-wrap { margin-top: 8px; }
-    .captcha-error {
-      display: none;
-      color: #dc2626;
-      font-size: 0.78rem;
-      margin-top: 8px;
-      font-weight: 500;
-    }
-    /* Scale reCAPTCHA to fit neatly */
-    .g-recaptcha { transform-origin: left top; }
+    .captcha-error { display: none; color: #ef4444; font-size: 0.78rem; margin-top: 8px; font-weight: 500; }
+
+    .form-submit { margin-top: 24px; }
     .btn-submit {
-      width: 100%;
-      background: var(--orange);
-      color: var(--white);
-      padding: 15px 32px;
-      border-radius: 8px;
-      font-family: var(--font-body);
-      font-size: 0.97rem;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+      width: 100%; background: var(--green); color: var(--black);
+      padding: 15px 32px; border-radius: 8px;
+      font-family: var(--font-body); font-size: 0.97rem; font-weight: 700;
+      border: none; cursor: pointer; transition: all 0.2s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
     }
     .btn-submit:hover {
-      background: var(--orange-deep);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(249,115,22,0.35);
+      background: var(--green-deep); transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(34,255,85,0.3);
     }
-    .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
-    .form-note { text-align: center; font-size: 0.76rem; color: #bbb; margin-top: 12px; }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-note { text-align: center; font-size: 0.76rem; color: #333; margin-top: 12px; }
     .success-msg {
       display: none;
-      background: rgba(34,197,94,0.08);
-      border: 1px solid rgba(34,197,94,0.25);
-      border-radius: 10px;
-      padding: 18px 22px;
-      color: #15803d;
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-align: center;
-      margin-top: 16px;
+      background: rgba(34,255,85,0.06);
+      border: 1px solid rgba(34,255,85,0.2);
+      border-radius: 10px; padding: 18px 22px;
+      color: var(--green); font-size: 0.9rem; font-weight: 500;
+      text-align: center; margin-top: 16px;
     }
 
     @media (max-width: 900px) {
@@ -197,23 +130,17 @@
 </head>
 <body>
 
-<!-- ─── Navigation ─── -->
 <nav class="nav" id="mainNav">
-  <a href="index.html" class="nav-logo">
-    <img src="logo.png" alt="Allayer" />
-  </a>
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Allayer" /></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About Us</a></li>
     <li><a href="services.html">Payment Services</a></li>
     <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
   </ul>
-  <div class="hamburger" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- ─── Contact Page ─── -->
 <div class="contact-page">
   <section class="contact-section">
     <div class="contact-inner">
@@ -293,21 +220,17 @@
             </div>
           </div>
 
-          <!-- ─── reCAPTCHA ─── -->
+          <!-- reCAPTCHA -->
           <div class="form-group full recaptcha-wrap">
-            <div class="g-recaptcha" data-sitekey="6LeumHosAAAAAP-O3J_zxU-ZMe7WRFzuLv04rjQI"></div>
+            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY_HERE" data-theme="dark"></div>
             <p class="captcha-error" id="captchaError">Please complete the CAPTCHA to continue.</p>
           </div>
 
           <div class="form-submit">
-            <button type="submit" class="btn-submit" id="submitBtn">
-              Send Message →
-            </button>
+            <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
           </div>
           <p class="form-note">By submitting, you agree to our Privacy Policy. We'll never share your information.</p>
-          <div class="success-msg" id="successMsg">
-            ✅ Your message has been sent! We'll be in touch within one business day.
-          </div>
+          <div class="success-msg" id="successMsg">✅ Your message has been sent! We'll be in touch within one business day.</div>
         </form>
       </div>
 
@@ -319,9 +242,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-logo-wrap">
-        <img src="logo.png" alt="Allayer" />
-      </div>
+      <img src="logo.png" alt="Allayer" />
       <div class="footer-brand-tagline">Powering the Next Era of Financial Connectivity</div>
       <p>Allayer Limited is a subsidiary of Ibanana Limited, a registered FINTRAC MSB: C100000387.</p>
     </div>
@@ -337,20 +258,12 @@
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li>
-          <span class="f-icon">✉️</span>
-          <a href="mailto:support@allayer.asia">support@allayer.asia</a>
-        </li>
-        <li>
-          <span class="f-icon">📍</span>
-          <span>Unit B, 14/F, Magnet Place Tower 2, No. 38-42 Kwai Fung Crescent, Kwai Chung, Hong Kong</span>
-        </li>
+        <li><span class="f-icon">✉️</span><a href="mailto:support@allayer.asia">support@allayer.asia</a></li>
+        <li><span class="f-icon">📍</span><span>Unit B, 14/F, Magnet Place Tower 2, No. 38-42 Kwai Fung Crescent, Kwai Chung, Hong Kong</span></li>
       </ul>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Allayer Limited. All rights reserved.</span>
-  </div>
+  <div class="footer-bottom"><span>© 2026 Allayer Limited. All rights reserved.</span></div>
 </footer>
 
 <script>
@@ -362,13 +275,8 @@
     e.preventDefault();
     const captchaResponse = grecaptcha.getResponse();
     const captchaError = document.getElementById('captchaError');
-
-    if (!captchaResponse) {
-      captchaError.style.display = 'block';
-      return;
-    }
+    if (!captchaResponse) { captchaError.style.display = 'block'; return; }
     captchaError.style.display = 'none';
-
     const btn = document.getElementById('submitBtn');
     btn.textContent = 'Sending...';
     btn.disabled = true;
