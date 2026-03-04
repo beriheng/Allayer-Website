@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us – Allayer</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
   <style>
@@ -96,6 +97,9 @@
     }
     select.form-control option { background: var(--dark-3); color: var(--white); }
 
+
+    .recaptcha-wrap { margin-top: 8px; }
+    .captcha-error { display: none; color: #ef4444; font-size: 0.78rem; margin-top: 8px; font-weight: 500; }
 
     .form-submit { margin-top: 24px; }
     .btn-submit {
@@ -223,6 +227,12 @@
             </div>
           </div>
 
+          <!-- reCAPTCHA -->
+          <div class="form-group full recaptcha-wrap">
+            <div class="g-recaptcha" data-sitekey="6LdgRH8sAAAAABINmFrT7npDCkPJTCaPY2BycYeX" data-theme="dark"></div>
+            <p class="captcha-error" id="captchaError">Please complete the CAPTCHA to continue.</p>
+          </div>
+
           <div class="form-submit">
             <button type="submit" class="btn-submit" id="submitBtn">Send Message →</button>
           </div>
@@ -270,6 +280,14 @@
 
   function handleSubmit(e) {
     e.preventDefault();
+    const captchaResponse = grecaptcha.getResponse();
+    const captchaError = document.getElementById('captchaError');
+    if (!captchaResponse) {
+      captchaError.style.display = 'block';
+      return;
+    }
+    captchaError.style.display = 'none';
+
     const btn = document.getElementById('submitBtn');
     const form = document.getElementById('contactForm');
     btn.textContent = 'Sending...';
@@ -284,14 +302,17 @@
         btn.textContent = '✓ Sent!';
         document.getElementById('successMsg').style.display = 'block';
         form.reset();
+        grecaptcha.reset();
       } else {
         btn.textContent = 'Send Message →';
         btn.disabled = false;
+        grecaptcha.reset();
         alert('Something went wrong. Please email us directly at support@allayer.asia');
       }
     }).catch(() => {
       btn.textContent = 'Send Message →';
       btn.disabled = false;
+      grecaptcha.reset();
       alert('Something went wrong. Please email us directly at support@allayer.asia');
     });
   }
